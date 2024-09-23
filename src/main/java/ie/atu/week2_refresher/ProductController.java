@@ -8,16 +8,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    private List<Service> products = new ArrayList<>();
+    private List<ProductEntity> products = new ArrayList<>();
 
-    @GetMapping
-    public List<Service> getAllProducts() {
+    @GetMapping("/getdetails") //GET: http://localhost:8080/products/getdetails
+    public List<ProductEntity> getAllProducts() {
         return products;
     }
 
-    @PostMapping
-    public void addProduct(@RequestBody Service service) {
-        products.add(service);
+    @PostMapping("/postdetails") //POST: http://localhost:8080/products/postdetails
+    public void addProduct(@RequestBody ProductEntity productEntity) {
+        products.add(productEntity);
     }
 }
 

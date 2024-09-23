@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Service {
+public class ProductEntity {
     private String id;
     private String name;
     private float price;
