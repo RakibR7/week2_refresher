@@ -1,3 +1,16 @@
+/*
+
+application/json
+
+
+{
+  "id": "88",
+  "name": "Rakib",
+  "price": 1.23
+}
+*/
+
+
 package ie.atu.week2_refresher;
 
 import org.springframework.boot.SpringApplication;
