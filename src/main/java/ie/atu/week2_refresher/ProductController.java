@@ -18,6 +18,7 @@ public class ProductController {
     public void addProduct(@RequestBody Product product) {
         products.add(product);
     }
+
 }
 
 
