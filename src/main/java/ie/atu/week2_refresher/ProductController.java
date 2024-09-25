@@ -1,23 +1,22 @@
 package ie.atu.week2_refresher;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    private List<Service> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
-    @GetMapping
-    public List<Service> getAllProducts() {
+    @GetMapping("/getdetails")
+    public List<Product> getAllProducts() {
         return products;
     }
 
-    @PostMapping
-    public void addProduct(@RequestBody Service service) {
-        products.add(service);
+    @PostMapping("/postdetails")
+    public void addProduct(@RequestBody Product product) {
+        products.add(product);
     }
 }
 
