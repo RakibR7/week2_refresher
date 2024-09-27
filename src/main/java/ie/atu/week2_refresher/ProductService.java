@@ -7,12 +7,32 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    private List<Product> productList = new ArrayList<>();
+    private final List<Product> productList = new ArrayList<>();
     public List<Product> getAllProducts() {
         return productList;
     }
-    public Product addProduct(Product product) {
+    public void addProduct(Product product) {
         productList.add(product);
-        return product;
+    }
+
+    public boolean editProduct(float id, Product updatedProduct) {
+        for (Product product : productList) {
+            if (product.getId() == id) {
+                product.setName(updatedProduct.getName());
+                product.setPrice(updatedProduct.getPrice());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean deleteProduct(float id) {
+        for (Product product : productList) {
+            if (product.getId() == id) {
+                productList.remove(product);
+                return true;
+            }
+        }
+        return false;
     }
 }
