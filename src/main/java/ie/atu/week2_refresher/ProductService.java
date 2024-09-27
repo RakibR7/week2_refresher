@@ -11,28 +11,28 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return productList;
     }
-    public void addProduct(Product product) {
+    public Product addProduct(Product product) {
         productList.add(product);
+        return product;
     }
 
-    public boolean editProduct(float id, Product updatedProduct) {
-        for (Product product : productList) {
-            if (product.getId() == id) {
-                product.setName(updatedProduct.getName());
-                product.setPrice(updatedProduct.getPrice());
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public boolean deleteProduct(float id) {
-        for (Product product : productList) {
-            if (product.getId() == id) {
-                productList.remove(product);
-                return true;
+    public Product updateProduct(long id, Product product) {
+        for (Product existingProduct : productList) {
+            if (existingProduct.getId() == (id)) {
+                existingProduct.setName(product.getName());
+                existingProduct.setPrice(product.getPrice());
+                return existingProduct;
             }
         }
-        return false;
+        return null;
+    }
+    public void deleteProduct(long id) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == id) {
+                productList.remove(i);
+                return;
+            }
+        }
     }
 }

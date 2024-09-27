@@ -1,8 +1,6 @@
 package ie.atu.week2_refresher;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -22,29 +20,20 @@ public class ProductController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<String> addProduct(@RequestBody Product newProduct) {
-        productService.addProduct(newProduct);
-        return new ResponseEntity<>("Product successfully created\n", HttpStatus.CREATED);
+    public Product addProduct(@RequestBody Product newProduct) {
+         return productService.addProduct(newProduct);
     }
 
-    @PutMapping("edit/{id}")
-    public ResponseEntity<String> editProduct(@PathVariable long id, @RequestBody Product changedProduct) {
-        boolean status = productService.editProduct(id, changedProduct);
-
-        if(status){
-            return new ResponseEntity<>("Product successfully Edited\n", HttpStatus.CREATED);
-        }else
-            return new ResponseEntity<>("Product not found\n", HttpStatus.BAD_REQUEST);
+    @PutMapping("update/{id}")
+    public Product updateProduct(@PathVariable long id,@RequestBody Product product) {
+        return productService.updateProduct(id, product);
     }
+
+
 
     @DeleteMapping("delete/{id}")
-    public ResponseEntity<String> editProduct(@PathVariable long id) {
-        boolean status = productService.deleteProduct(id);
-
-        if(status){
-            return new ResponseEntity<>("Product successfully Deleted\n", HttpStatus.CREATED);
-        }else
-            return new ResponseEntity<>("Product not found\n", HttpStatus.BAD_REQUEST);
+    public void deleteProduct(@PathVariable long id) {
+        productService.deleteProduct(id);
     }
 }
 
